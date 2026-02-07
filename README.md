@@ -51,15 +51,17 @@ make all
 ```bash
 sudo ./MT25018_Part_C_run_experiments.sh
 ```
-Creates network namespaces (server_ns: 10.1.1.1, client_ns: 10.1.1.2), runs 48 experiments (3 implementations × 4 sizes × 4 threads), collects metrics, cleans up.
+Creates network namespaces (server_ns: 10.1.1.1, client_ns: 10.1.1.2), runs 48 experiments (3 implementations × 4 sizes × 4 threads), collects metrics, **generates all plots automatically**, and cleans up.
 
-### Generate Plots
+### Generate Plots Manually (Optional)
+If you want to regenerate plots separately:
 ```bash
 python3 MT25018_Plot1_Throughput_vs_MessageSize.py
 python3 MT25018_Plot2_Latency_vs_ThreadCount.py
 python3 MT25018_Plot3_CacheMisses_vs_MessageSize.py
 python3 MT25018_Plot4_CyclesPerByte_vs_MessageSize.py
 ```
+**Note:** Plots use hardcoded data from scripts, not CSV files.
 
 ---
 

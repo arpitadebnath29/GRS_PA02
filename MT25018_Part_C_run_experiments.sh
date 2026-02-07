@@ -259,17 +259,18 @@ done
 
 echo -e "\n${GREEN}=========================================="
 echo "All experiments completed!"
-echo "==========================================${NC}"
-echo ""
-echo "Results saved to:"
-echo "  - MT25018_Throughput_Metrics.csv (main directory)"
-echo "  - MT25018_Latency_Metrics.csv (main directory)"
-echo "  - MT25018_Perf_Metrics.csv (main directory)"
-echo "  - Individual logs and perf outputs in: $OUTPUT_DIR/"
-echo ""
 
 # Cleanup network namespaces
 cleanup_namespaces
 
 echo -e "${GREEN}Network namespaces cleaned up.${NC}"
-echo -e "${GREEN}Done! You can now run the plotting scripts.${NC}"
+
+# Generate plots automatically
+echo -e "\n${YELLOW}Generating plots...${NC}"
+python3 MT25018_Plot1_Throughput_vs_MessageSize.py
+python3 MT25018_Plot2_Latency_vs_ThreadCount.py
+python3 MT25018_Plot3_CacheMisses_vs_MessageSize.py
+python3 MT25018_Plot4_CyclesPerByte_vs_MessageSize.py
+
+echo -e "\n${GREEN}=========================================="
+echo "All plots generated successfully!"
