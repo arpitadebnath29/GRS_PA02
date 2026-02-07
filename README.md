@@ -1,7 +1,9 @@
 # MT25018 - Graduate Systems PA02
 ## Analysis of Network I/O Primitives
 
-**Student:** MT25018 | **Course:** CSE638 | **Deadline:** February 7, 2026
+**Student:** Arpita Debnath (MT25018) | **Course:** CSE638 | **Deadline:** February 7, 2026
+
+**GitHub Repository:** https://github.com/arpitadebnath29/GRS_PA02
 
 ---
 
@@ -105,7 +107,3 @@ python3 MT25018_Plot4_CyclesPerByte_vs_MessageSize.py
 **Hardware:** CPU cycles, L1/LLC cache misses, context switches
 
 ---
-
-## AI Usage
-
-Implementation uses GitHub Copilot assistance. See report for detailed declaration with prompts and verification steps.
