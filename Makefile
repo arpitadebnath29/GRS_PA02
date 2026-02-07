@@ -58,16 +58,28 @@ clean:
 	rm -f *.o
 	@echo "Cleaned all binaries"
 
+# Clean data files and results
+clean-data:
+	rm -f MT25018_Part_C_*.csv
+	rm -rf experiment_results plots
+	@echo "Cleaned all data files and results"
+
+# Clean everything
+clean-all: clean clean-data
+	@echo "Cleaned everything"
+
 # Help target
 help:
 	@echo "MT25018 Graduate Systems PA02 - Makefile"
 	@echo ""
 	@echo "Available targets:"
-	@echo "  all    - Build all implementations (default)"
-	@echo "  A1     - Build Part A1 (Two-Copy) only"
-	@echo "  A2     - Build Part A2 (One-Copy) only"
-	@echo "  A3     - Build Part A3 (Zero-Copy) only"
-	@echo "  clean  - Remove all binaries"
-	@echo "  help   - Show this help message"
+	@echo "  all        - Build all implementations (default)"
+	@echo "  A1         - Build Part A1 (Two-Copy) only"
+	@echo "  A2         - Build Part A2 (One-Copy) only"
+	@echo "  A3         - Build Part A3 (Zero-Copy) only"
+	@echo "  clean      - Remove all binaries"
+	@echo "  clean-data - Remove CSV files and result directories"
+	@echo "  clean-all  - Remove everything (binaries + data)"
+	@echo "  help       - Show this help message"
 
-.PHONY: all A1 A2 A3 clean help
+.PHONY: all A1 A2 A3 clean clean-data clean-all help

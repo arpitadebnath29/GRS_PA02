@@ -111,9 +111,9 @@ echo -e "${GREEN}Compilation successful!${NC}"
 setup_namespaces
 
 # Initialize CSV files with headers (in main directory)
-echo "Implementation,MessageSize,ThreadCount,Throughput_Gbps,TotalBytes,TotalMessages,Duration_sec" > "MT25018_Throughput_Metrics.csv"
-echo "Implementation,MessageSize,ThreadCount,Latency_us" > "MT25018_Latency_Metrics.csv"
-echo "Implementation,MessageSize,ThreadCount,CPU_Cycles,CacheMisses,L1_Misses,LLC_Misses,ContextSwitches" > "MT25018_Perf_Metrics.csv"
+echo "Implementation,MessageSize,ThreadCount,Throughput_Gbps,TotalBytes,TotalMessages,Duration_sec" > "MT25018_Part_C_Throughput_Metrics.csv"
+echo "Implementation,MessageSize,ThreadCount,Latency_us" > "MT25018_Part_C_Latency_Metrics.csv"
+echo "Implementation,MessageSize,ThreadCount,CPU_Cycles,CacheMisses,L1_Misses,LLC_Misses,ContextSwitches" > "MT25018_Part_C_Perf_Metrics.csv"
 
 echo -e "\n${YELLOW}Starting experiments...${NC}"
 echo "This will take approximately $((${#MESSAGE_SIZES[@]} * ${#THREAD_COUNTS[@]} * ${#IMPLEMENTATIONS[@]} * ($TEST_DURATION + 5))) seconds"
@@ -220,13 +220,13 @@ run_experiment() {
     
     # Write to 3 separate CSV files
     echo "$impl_name,$msg_size,$thread_count,$throughput,$total_bytes,$total_msgs,$duration" \
-        >> "MT25018_Throughput_Metrics.csv"
+        >> "MT25018_Part_C_Throughput_Metrics.csv"
     
     echo "$impl_name,$msg_size,$thread_count,$latency" \
-        >> "MT25018_Latency_Metrics.csv"
+        >> "MT25018_Part_C_Latency_Metrics.csv"
     
     echo "$impl_name,$msg_size,$thread_count,$cpu_cycles,$cache_misses,$l1_misses,$llc_misses,$ctx_switches" \
-        >> "MT25018_Perf_Metrics.csv"
+        >> "MT25018_Part_C_Perf_Metrics.csv"
     
     # Display collected metrics
     echo -e "${GREEN}Metrics Collected:${NC}"
@@ -259,6 +259,14 @@ done
 
 echo -e "\n${GREEN}=========================================="
 echo "All experiments completed!"
+echo "==========================================${NC}"
+echo ""
+echo "Results saved to:"
+echo "  - MT25018_Part_C_Throughput_Metrics.csv (main directory)"
+echo "  - MT25018_Part_C_Latency_Metrics.csv (main directory)"
+echo "  - MT25018_Part_C_Perf_Metrics.csv (main directory)"
+echo "  - Individual logs and perf outputs in: $OUTPUT_DIR/"
+echo ""
 
 # Cleanup network namespaces
 cleanup_namespaces
@@ -274,3 +282,6 @@ python3 MT25018_Plot4_CyclesPerByte_vs_MessageSize.py
 
 echo -e "\n${GREEN}=========================================="
 echo "All plots generated successfully!"
+echo "==========================================${NC}"
+echo "Plots saved in plots/ directory"
+echo -e "${GREEN}Done! Experiments complete and plots ready.${NC}"
